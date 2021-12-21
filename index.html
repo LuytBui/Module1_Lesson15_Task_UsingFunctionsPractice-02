@@ -1,10 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 02</title>
 </head>
 <body>
-$END$
+<div>
+
+    <p><strong>Bài 1: </strong> Viết hàm tính bình phương của một số bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.</p>
+    <input type="button" value="Run" onclick="bai1()">
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 2: </strong>Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được</p>
+    <input type="button" value="Run" onclick="bai2()">
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 3:</strong> Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.
+    </p>
+    <input type="button" value="Run" onclick="bai3()">
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 4:</strong> Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không. Nếu là ký tự số hàm trả về true, ngược lại trả về false.</p>
+    <input type="button" value="Run" onclick="bai4()">
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 5:</strong> Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.</p>
+    <input type="button" value="Run" onclick="bai5()">
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 6:</strong> Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không. <br>Nếu là nguyên dương trả về true, ngược lại trả về false.</p>
+    <input type="button" value="Run" onclick="bai6()">
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 7:</strong> Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó.</p>
+    <input type="button" value="Run" onclick="bai7()">
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 8:</strong> Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó</p>
+    <input type="button" value="Run" onclick="bai8()">
+    <p id="result8"></p>
+    <hr>
+</div>
+<div>
+    <p><strong>Bài 9:</strong> Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.
+        <br>Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1. </p>
+    <input type="button" value="Run" onclick="bai9()">
+    <hr>
+</div>
+<script>
+    function bai1() {
+        function square(x) {
+            return x * x;
+        }
+
+        let number = parseFloat(prompt('Nhập vào một số'));
+        let message = 'Bình phương của ' + number + ' là: ' + square(number);
+        alert(message);
+    }
+    function bai2() {
+        function circleArea(diameter) {
+            return Math.PI * diameter * diameter / 4;
+        }
+
+        function circlePerimeter(diameter) {
+            return Math.PI * diameter;
+        }
+
+        let d = parseFloat(prompt('Nhập đường kính hình tròn: '));
+        let message = 'Đường kính hình tròn: ' + d + '\n';
+        message += 'Diện tích hình tròn: ' + circleArea(d) + '\n';
+        message += 'Chu vi hình tròn: ' + circlePerimeter(d) + '\n';
+        alert(message);
+    }
+    function bai3() {
+        let number = parseInt(prompt('Nhập số nguyên'));
+        let message = 'Giai thừa của ' + number + ' là: ' + factorial(number);
+        alert(message);
+
+        function factorial(x) {
+            let result = 1;
+            for (let i = 2; i <= x; i++) {
+                result *= i;
+            }
+            return result;
+        }
+    }
+    function bai4(){
+        function isNumberic(char){
+            const KEY_CODE_0 = '0'.charCodeAt(0);
+            const KEY_CODE_9 = '9'.charCodeAt(0);
+            return (char.charCodeAt(0) >= KEY_CODE_0 && char.charCodeAt(0)<= KEY_CODE_9);
+        }
+
+        let ch = prompt('Nhập ký tự:');
+        let message = isNumberic(ch) ? 'Ký tự vừa nhập là ký tự số': 'Ký tự vừa nhập không phải là số';
+        alert(message);
+    }
+    function bai5(){
+        function minOfThree(a, b, c){
+            return (a < b)? ((a<c)? a: c)   : ((b<c)? b:c);
+        }
+        let number1 = parseFloat(prompt('Nhập vào số thứ 1:'));
+        let number2 = parseFloat(prompt('Nhập vào số thứ 2:'));
+        let number3 = parseFloat(prompt('Nhập vào số thứ 3:'));
+        let message = 'Số bé nhất trong 3 số trên là: '+ minOfThree(number1, number2, number3);
+        alert(message);
+    }
+    function bai6(){
+        function isPositive(x){
+            return x>0;
+        }
+        let number = parseFloat(prompt('Nhập vào một số:'));
+        let message = isPositive(number) ? 'Số này là số dương' : 'Số này không phải là số dương';
+        alert(message);
+    }
+    function bai7(){
+        function swap(obj){
+            let temp = obj.first;
+            obj.first = obj.second;
+            obj.second = temp;
+        }
+        let a = parseFloat(prompt('Nhập vào số thứ nhất:'));
+        let b = parseFloat(prompt('Nhập vào số thứ hai:'));
+
+        let value = {
+            first: a,
+            second: b
+        }
+        alert('Trước khi chạy hàm: first='+ value.first + '; second='+value.second);
+        swap(value);
+        alert('Sau khi chạy hàm: first='+ value.first + '; second='+value.second);
+    }
+    function bai8(){
+        function reverseArr(arr){
+            let result = [];
+            for (let i = 0; i< arr.length; i++){
+                result.push(arr[arr.length-i-1]);
+            }
+            return result;
+        }
+        let str = prompt("Nhập một mảng (phân cách bằng dấu ',')");
+        let arr1 = str.split(',');
+        let arr2 = reverseArr(arr1);
+        let message = 'Mảng ban đầu: '+ arr1 + '\n';
+        message += 'Mảng đảo ngược: '+ arr2;
+        alert(message);
+    }
+    function bai9(){
+        function countInArray(arr, x){
+            let count = 0;
+            for (let i = 0; i< arr.length; i++){
+                if (arr[i] === x){
+                    count++;
+                }
+            }
+            return (count > 0) ? count : -1;
+        }
+        let inputString = prompt("Nhập một mảng (phân cách bằng dấu ',')");
+        let arr = inputString.split(',');
+        let key = prompt("Nhập ký tự cần tìm kiếm: ");
+        let message = 'Mảng input: '+ arr + '\n';
+        message += 'Ký tự cần tìm kiếm: '+ key + '\n';
+        message += 'Kết quả trả về: ' + countInArray(arr, key);
+        alert(message);
+    }
+</script>
+
 </body>
 </html>
